@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import SidebarData from './SidebarData';
-import Logo from '../assets/logo.jpg';
+import SearchInput from '../searchInput/searchInput';
+import AccordionField from '../accordion/accordion';
+import Logo from '../../assets/logo.jpg';
 import './sideBar.css';
 
 function Navbar() {
@@ -24,11 +27,24 @@ function Navbar() {
           <li className="logo">
             <img src={Logo} alt="logo" width="50%" />
           </li>
-          {SidebarData.map((item) => (
-            <li key={item.id} className="nav-text">
+          <li>
+            <SearchInput />
+          </li>
+          <li className="nav-dashboard-label">
+            <DashboardIcon />
+            <span> Dashboard</span>
+          </li>
+          <li>
+            <span style={{ color: 'gray', fontSize: '15px' }}>SETTINGS</span>
+          </li>
+          <li>
+            <AccordionField />
+          </li>
+          {/* {SidebarData.map((item) => (
+            <li key={item.id}>
               <span>{item.title}</span>
             </li>
-          ))}
+          ))} */}
         </ul>
       </nav>
     </div>

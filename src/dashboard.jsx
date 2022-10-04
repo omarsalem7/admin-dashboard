@@ -1,4 +1,4 @@
-import Navbar from './components/sideBar';
+import Navbar from './components/sideBar/sideBar';
 function Dashboard() {
   return (
     <div className="App">

@@ -42,7 +42,13 @@
   background-color: #050e2d;
   outline: none;
   border: none;
-  color: #fff;
+  color: rgb(180, 177, 177);
+  padding: 0 20px;
+  list-style: none;
+}
+
+.nav-menu-items > li {
+  padding: 10px 0;
 }
 
 .navbar-toggle {
@@ -69,6 +75,13 @@
   align-items: center;
 }
 
+.nav-dashboard-label {
+  /* margin: 25px 0 20px 15px; */
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .nav-text {
   display: flex;
   justify-content: flex-start;
@@ -78,6 +91,3 @@
   height: 60px;
 }
 
-.nav-text a:hover {
-  background-color: #97bf0f;
-}
