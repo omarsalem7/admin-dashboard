@@ -2,13 +2,13 @@
   margin-left: -15px;
 }
 .accordion-color {
-  background-color: #050e2d !important;
-  color: rgb(180, 177, 177) !important;
+  background-color: var(--dark) !important;
+  color: var(--textGray) !important;
 }
 
 .accordion-color-detail {
   background-color: #202949;
-  color: rgb(180, 177, 177);
+  color: var(--textGray);
 }
 
 .accordion-color-detail li {
@@ -17,9 +17,9 @@
 }
 
 .accordion-color-detail li:hover {
-  color: green;
+  color: var(--green);
 }
 
 .accordion-color svg {
-  color: aliceblue;
+  color: var(--textGray);
 }

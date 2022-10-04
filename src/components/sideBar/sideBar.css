@@ -39,10 +39,10 @@
 
 .nav-menu-items {
   width: 100%;
-  background-color: #050e2d;
+  background-color: var(--dark);
   outline: none;
   border: none;
-  color: rgb(180, 177, 177);
+  color: var(--textGray);
   padding: 0 20px;
   list-style: none;
 }
@@ -76,7 +76,6 @@
 }
 
 .nav-dashboard-label {
-  /* margin: 25px 0 20px 15px; */
   display: flex;
   gap: 10px;
   align-items: center;
@@ -90,4 +89,3 @@
   list-style: none;
   height: 60px;
 }
-
