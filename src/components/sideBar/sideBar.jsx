@@ -12,17 +12,10 @@ function Navbar() {
   const showSidebar = () => setSidebar(!sidebar);
   return (
     <div className="navbar-container">
-      <span className="navbar">
-        <button type="button" className="open-btn">
-          <MenuOpenIcon onClick={showSidebar} />
-        </button>
-      </span>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
         <ul className="nav-menu-items">
           <li className="navbar-toggle">
-            <button type="button" className="close-btn">
-              <MenuOpenIcon onClick={showSidebar} />{' '}
-            </button>
+           
           </li>
           <li className="logo">
             <img src={Logo} alt="logo" width="50%" />
@@ -40,13 +33,13 @@ function Navbar() {
           <li>
             <AccordionField />
           </li>
-          {/* {SidebarData.map((item) => (
-            <li key={item.id}>
-              <span>{item.title}</span>
-            </li>
-          ))} */}
         </ul>
       </nav>
+      <span className="navbar">
+        <button type="button" className="open-btn">
+          <MenuOpenIcon onClick={showSidebar} />
+        </button>
+      </span>
     </div>
   );
 }
