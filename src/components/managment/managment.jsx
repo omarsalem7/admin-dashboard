@@ -13,6 +13,11 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { columns, rows } from './dataGridUtils';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import CloseIcon from '@mui/icons-material/Close';
+import MainBtn from '../mainBtn/mainBtn';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 5;
@@ -42,7 +47,6 @@ function Managment() {
   ]);
 
   const [checks, setChecks] = useState([]);
-
   useEffect(() => {
     formik.values.startDate = value[0]?.toDate().toISOString();
     formik.values.endDate = value[1]?.toDate().toISOString();
@@ -57,13 +61,61 @@ function Managment() {
     } = event;
     setChecks(typeof value === 'string' ? value.split(',') : value);
   };
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <div className="manage-container">
       <div className="mange-header">
         <h1>User Managment</h1>
-        <button className="add-btn"> + Add New</button>
+        {/* <button className="add-btn"></button> */}
+        <MainBtn onClick={handleOpen}> + Add New</MainBtn>
       </div>
-
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={{ ...style }}>
+            <div className="modal-container">
+              <div className="modal-header">
+                <h2>Add New User</h2>
+                <Button onClick={handleClose}>
+                  <CloseIcon fontSize="large" color="success" />
+                </Button>
+              </div>
+              <form className="modal-form">
+                <div>
+                  <label>First Name</label>
+                  <SearchInput placeholder="Enter First Name" />
+                </div>
+                <div>
+                  <label>Last Name</label>
+                  <SearchInput placeholder="Enter Last Name" />
+                </div>
+                <div>
+                  <label>User Name</label>
+                  <SearchInput placeholder="Enter Username" />
+                </div>
+                <div>
+                  <label>Email Address</label>
+                  <SearchInput placeholder="Enter email address" />
+                </div>
+              </form>
+              <hr />
+              <div className="modal-footer">
+                <MainBtn>Add user</MainBtn>
+                <MainBtn onClick={handleClose} style={{ background: 'gray' }}>
+                  Cancel
+                </MainBtn>
+              </div>
+            </div>
+          </Box>
+        </Modal>
+      </div>
       <div className="managment">
         <form onSubmit={formik.handleSubmit} className="form-filters">
           <SearchInput
@@ -119,4 +171,14 @@ function Managment() {
   );
 }
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  borderRadius: '7px',
+  transform: 'translate(-50%, -50%)',
+  width: 500,
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+};
 export default Managment;

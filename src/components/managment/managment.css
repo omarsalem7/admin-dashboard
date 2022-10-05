@@ -61,3 +61,27 @@
   color: rgb(79, 79, 255);
   font-size: 15px;
 }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark);
+  color: #fff;
+  padding: 20px;
+}
+
+.modal-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-footer {
+  gap: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 40px;
+}
