@@ -8,13 +8,13 @@ import Logo from '../../assets/logo.jpg';
 import './sideBar.css';
 import { filterWithEmail } from '../../utils';
 
-function SideBar({ data, setData }) {
+function SideBar({ setData }) {
   const [sidebar, setSidebar] = useState(true);
   const [query, setQuery] = useState('');
   const showSidebar = () => setSidebar(!sidebar);
   function handleChange(event) {
     setQuery(event.target.value);
-    setData(filterWithEmail(data, query));
+    setData(filterWithEmail(query));
   }
   return (
     <div className="navbar-container">

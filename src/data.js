@@ -1,4 +1,4 @@
-export const fakeData = [
+export const mockData = [
   {
     id: 1,
     lastName: 'Omar',
@@ -6,6 +6,7 @@ export const fakeData = [
     userName: 'omar.ashraf1',
     age: 35,
     emailAddress: 'fdsfdsdfs@gmail.com',
+    status: 'Active',
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const fakeData = [
     lastName: 'salem',
     firstName: 'ahmed',
     age: 42,
+    status: 'Inactive',
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const fakeData = [
     lastName: 'wick',
     firstName: 'John',
     age: 45,
+    status: 'Locked',
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ export const fakeData = [
     lastName: 'Snow',
     firstName: 'stark',
     age: 16,
+    status: 'Active',
   },
   {
     id: 5,
@@ -38,6 +42,7 @@ export const fakeData = [
     firstName: 'Targaryen',
     emailAddress: 'Targaryen44@gmail.com',
     age: 41,
+    status: 'Active',
   },
   {
     id: 6,
@@ -46,6 +51,7 @@ export const fakeData = [
     firstName: 'Jon',
     emailAddress: 'Melisandre@gmail.com',
     age: 150,
+    status: 'Inactive',
   },
   {
     id: 7,
@@ -54,6 +60,7 @@ export const fakeData = [
     firstName: 'Clifford',
     emailAddress: 'Cliffordd885@gmail.com',
     age: 44,
+    status: 'Locked',
   },
   {
     id: 8,
@@ -62,6 +69,7 @@ export const fakeData = [
     firstName: 'Frances',
     emailAddress: 'dsasad@gmail.com',
     age: 36,
+    status: 'Active',
   },
   {
     id: 9,
@@ -70,5 +78,6 @@ export const fakeData = [
     firstName: 'Roxie',
     emailAddress: 'wdqwfw@gmail.com',
     age: 65,
+    status: 'Inactive',
   },
 ];

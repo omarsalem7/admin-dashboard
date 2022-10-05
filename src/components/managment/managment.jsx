@@ -18,6 +18,8 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import MainBtn from '../mainBtn/mainBtn';
+import { filterWithMutiValues } from '../../utils';
+import { mockData } from '../../data';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 5;
@@ -31,7 +33,7 @@ const MenuProps = {
 };
 const names = ['Active', 'Inactive', 'Locked'];
 
-function Managment({ data }) {
+function Managment({ data, setData }) {
   const formik = useFormik({
     initialValues: {
       search: '',
@@ -39,6 +41,9 @@ function Managment({ data }) {
       startDate: '',
       endDate: '',
       status: [],
+    },
+    onSubmit: (values) => {
+      setData(filterWithMutiValues(values));
     },
   });
   const [value, setValue] = useState([
@@ -69,7 +74,7 @@ function Managment({ data }) {
     <div className="manage-container">
       <div className="mange-header">
         <h1>User Managment</h1>
-        <MainBtn onClick={handleOpen}> + Add New</MainBtn>
+        <MainBtn onClick={handleOpen}>+ Add New</MainBtn>
       </div>
       <div>
         <Modal
@@ -116,7 +121,7 @@ function Managment({ data }) {
         </Modal>
       </div>
       <div className="managment">
-        <form className="form-filters">
+        <form onSubmit={formik.handleSubmit} className="form-filters">
           <SearchInput
             name="search"
             onChange={formik.handleChange}
@@ -156,7 +161,9 @@ function Managment({ data }) {
             numberOfMonths={2}
             plugins={[<Footer position="bottom" />]}
           />
-          <button className="apply-filter-btn">Apply Filters</button>
+          <button type="submit" className="apply-filter-btn">
+            Apply Filters
+          </button>
         </form>
         <DataGrid
           rows={data}
