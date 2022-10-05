@@ -1,9 +1,9 @@
-import Navbar from './components/sideBar/sideBar';
+import SideBar from './components/sideBar/sideBar';
 import Managment from './components/managment/managment';
 function Dashboard() {
   return (
     <div className="App" style={{ display: 'flex' }}>
-      <Navbar />
+      <SideBar />
       <Managment />
     </div>
   );

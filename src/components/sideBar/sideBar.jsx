@@ -7,7 +7,7 @@ import AccordionField from '../accordion/accordion';
 import Logo from '../../assets/logo.jpg';
 import './sideBar.css';
 
-function Navbar() {
+function SideBar() {
   const [sidebar, setSidebar] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
   return (
@@ -42,4 +42,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default SideBar;

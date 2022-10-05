@@ -69,7 +69,6 @@ function Managment() {
     <div className="manage-container">
       <div className="mange-header">
         <h1>User Managment</h1>
-        {/* <button className="add-btn"></button> */}
         <MainBtn onClick={handleOpen}> + Add New</MainBtn>
       </div>
       <div>
