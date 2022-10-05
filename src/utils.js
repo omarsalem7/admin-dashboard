@@ -14,13 +14,17 @@ export const filterWithMutiValues = (values) =>
     if (
       values.search === '' &&
       values.userName === '' &&
-      values.status.length === 0
+      values.status.length === 0 &&
+      values.startDate === '' &&
+      values.endDate === ''
     ) {
       return item;
     } else if (
-      item.emailAddress.toLowerCase().includes(values.search.toLowerCase()) &&
-      item.userName.toLowerCase().includes(values.userName.toLowerCase()) &&
-      values.status.includes(item.status)
+      (item.emailAddress.toLowerCase().includes(values.search.toLowerCase()) &&
+        item.userName.toLowerCase().includes(values.userName.toLowerCase()) &&
+        values.status.includes(item.status) &&
+        item.date >= values.startDate) ||
+      item.date <= values.endDate
     ) {
       return item;
     }

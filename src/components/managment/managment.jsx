@@ -43,6 +43,7 @@ function Managment({ data, setData }) {
       status: [],
     },
     onSubmit: (values) => {
+      console.log(JSON.stringify(values, null, 2));
       setData(filterWithMutiValues(values));
     },
   });
@@ -57,8 +58,10 @@ function Managment({ data, setData }) {
     formik.values.endDate = value[1]?.toDate().toISOString();
     formik.values.status = checks;
   }, [value, checks]);
-  // console.log(formik.values);
-  // console.log(value[0].toDate().toISOString());
+
+  // const date = new Date();
+  // console.log(date.toISOString());
+  // console.log(formik.values.startDate < formik.values.endDate);
 
   const handleChange = (event) => {
     const {

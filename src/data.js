@@ -7,6 +7,7 @@ export const mockData = [
     age: 35,
     emailAddress: 'fdsfdsdfs@gmail.com',
     status: 'Active',
+    date: '2022-10-14T23:07:06.543Z',
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const mockData = [
     firstName: 'ahmed',
     age: 42,
     status: 'Inactive',
+    date: '2022-11-14T23:07:06.543Z',
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ export const mockData = [
     firstName: 'John',
     age: 45,
     status: 'Locked',
+    date: '2022-10-18T23:07:06.543Z',
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ export const mockData = [
     firstName: 'stark',
     age: 16,
     status: 'Active',
+    date: '2022-12-14T23:07:06.543Z',
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ export const mockData = [
     emailAddress: 'Targaryen44@gmail.com',
     age: 41,
     status: 'Active',
+    date: '2022-11-17T23:07:06.543Z',
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ export const mockData = [
     emailAddress: 'Melisandre@gmail.com',
     age: 150,
     status: 'Inactive',
+    date: '2022-11-22T23:07:06.543Z',
   },
   {
     id: 7,
@@ -61,6 +67,7 @@ export const mockData = [
     emailAddress: 'Cliffordd885@gmail.com',
     age: 44,
     status: 'Locked',
+    date: '2022-07-21T23:07:06.543Z',
   },
   {
     id: 8,
@@ -70,6 +77,7 @@ export const mockData = [
     emailAddress: 'dsasad@gmail.com',
     age: 36,
     status: 'Active',
+    date: '2022-08-05T23:07:06.543Z',
   },
   {
     id: 9,
@@ -79,5 +87,6 @@ export const mockData = [
     emailAddress: 'wdqwfw@gmail.com',
     age: 65,
     status: 'Inactive',
+    date: '2022-12-14T23:07:06.543Z',
   },
 ];

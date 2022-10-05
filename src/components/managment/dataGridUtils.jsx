@@ -36,4 +36,5 @@ export const columns = [
   { field: 'userName', headerName: 'User Name', width: 200 },
   { field: 'emailAddress', headerName: 'Email Address', width: 230 },
   { field: 'status', headerName: 'Status', width: 110 },
+  { field: 'date', headerName: 'Date', width: 150 },
 ];
