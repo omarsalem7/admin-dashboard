@@ -108,7 +108,6 @@ function Managment() {
           <button className="apply-filter-btn">Apply Filters</button>
         </form>
         <DataGrid
-          className="table-grid"
           rows={rows}
           columns={columns}
           pageSize={5}
