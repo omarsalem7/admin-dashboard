@@ -1,18 +1,8 @@
-.navbar {
-  /* position: fixed;
-  top: -10px;
-  left: -35px;
-  height: 30px;
-  width: 25px; */
-}
 .navbar-container {
   display: flex;
 }
 
 .open-btn {
-  /* position: absolute;
-  top: 15px;
-  left: 45px; */
   font-size: 2rem;
   background: none;
   outline: none;
