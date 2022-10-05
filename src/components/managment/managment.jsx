@@ -78,7 +78,7 @@ function Managment() {
             style={{ width: '15%' }}
             placeholder="user name"
           />
-          <FormControl sx={{ width: 200 }}>
+          <FormControl sx={{ width: 200 }} size="small">
             <InputLabel id="demo-multiple-checkbox-label">Status</InputLabel>
             <Select
               labelId="demo-multiple-checkbox-label"
