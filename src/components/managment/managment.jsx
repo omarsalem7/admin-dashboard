@@ -19,7 +19,6 @@ import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import MainBtn from '../mainBtn/mainBtn';
 import { filterWithMutiValues } from '../../utils';
-import { mockData } from '../../data';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 5;
@@ -54,14 +53,13 @@ function Managment({ data, setData }) {
 
   const [checks, setChecks] = useState([]);
   useEffect(() => {
-    formik.values.startDate = value[0]?.toDate().toISOString();
-    formik.values.endDate = value[1]?.toDate().toISOString();
+    formik.values.startDate = value[0]?.toDate()?.toLocaleDateString();
+    formik.values.endDate = value[1]?.toDate()?.toLocaleDateString();
     formik.values.status = checks;
   }, [value, checks]);
 
-  // const date = new Date();
-  // console.log(date.toISOString());
-  // console.log(formik.values.startDate < formik.values.endDate);
+  // const date = new Date().toLocaleDateString();
+  // console.log(date);
 
   const handleChange = (event) => {
     const {

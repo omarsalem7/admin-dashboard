@@ -20,11 +20,11 @@ export const filterWithMutiValues = (values) =>
     ) {
       return item;
     } else if (
-      (item.emailAddress.toLowerCase().includes(values.search.toLowerCase()) &&
-        item.userName.toLowerCase().includes(values.userName.toLowerCase()) &&
-        values.status.includes(item.status) &&
-        item.date >= values.startDate) ||
-      item.date <= values.endDate
+      item.emailAddress.toLowerCase().includes(values.search.toLowerCase()) &&
+      item.userName.toLowerCase().includes(values.userName.toLowerCase()) &&
+      values.status.includes(item.status) &&
+      item.date > values.startDate &&
+      item.date < values.endDate
     ) {
       return item;
     }
