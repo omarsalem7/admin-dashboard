@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SearchInput = ({ ...rest }) => {
-  return <Input type="text" {...rest} placeholder="Search..." />;
+  return <Input type="text" {...rest} />;
 };
 
 const Input = styled.input`
@@ -12,6 +12,7 @@ const Input = styled.input`
   border-radius: 5px;
   border: none;
   width: 100%;
+  border: 1px solid #c0c4d6;
 `;
 
 export default SearchInput;

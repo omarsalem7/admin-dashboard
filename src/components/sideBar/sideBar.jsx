@@ -14,14 +14,12 @@ function Navbar() {
     <div className="navbar-container">
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
         <ul className="nav-menu-items">
-          <li className="navbar-toggle">
-           
-          </li>
+          <li className="navbar-toggle"></li>
           <li className="logo">
             <img src={Logo} alt="logo" width="50%" />
           </li>
           <li>
-            <SearchInput />
+            <SearchInput placeholder="Search..." />
           </li>
           <li className="nav-dashboard-label">
             <DashboardIcon />

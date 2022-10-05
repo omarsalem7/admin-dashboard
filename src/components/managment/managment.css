@@ -1,7 +1,8 @@
 .manage-container {
   width: 100%;
   margin: 41px 5px 0 -24px;
-  height: 86.5vh;
+
+  /* height: 77vh; */
 }
 
 .mange-header {
@@ -10,11 +11,14 @@
   justify-content: space-between;
 }
 
+.MuiDataGrid-main {
+  height: 70vh;
+}
+
 .managment {
+  border-radius: 8px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  border-radius: 8px;
-  height: 100%;
 }
 
 .cellWithAvatar {
@@ -36,4 +40,26 @@
   color: #fff;
   padding: 0 15px;
   border-radius: 5px;
+}
+
+.form-filters {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+}
+
+.rmdp-input {
+  padding: 30.3px 5px !important;
+}
+
+.apply-filter-btn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  color: rgb(79, 79, 255);
+  font-size: 15px;
 }

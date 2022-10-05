@@ -1,130 +1,114 @@
 import './managment.css';
-import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
+import { useState, useEffect } from 'react';
+import DatePicker, { DateObject } from 'react-multi-date-picker';
+import Footer from 'react-multi-date-picker/plugins/range_picker_footer';
+import { useFormik } from 'formik';
+import SearchInput from '../searchInput/searchInput';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import { columns, rows } from './dataGridUtils';
 
-function stringToColor(string) {
-  let hash = 0;
-  let i;
-  for (i = 0; i < string.length; i += 1) {
-    hash = string.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  let color = '#';
-
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.slice(-2);
-  }
-
-  return color;
-}
-
-const columns = [
-  {
-    field: 'name',
-    headerName: 'Name',
-    width: 180,
-    renderCell: (params) => {
-      return (
-        <div className="cellWithAvatar">
-          <Avatar
-            sx={{ bgcolor: stringToColor(params.row.firstName) }}
-          >{`${params.row.firstName[0].toUpperCase()}${params.row.lastName[0].toUpperCase()}`}</Avatar>
-          <span>{`${params.row.firstName} ${params.row.lastName}`}</span>
-        </div>
-      );
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 5;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 200,
     },
   },
-  { field: 'userName', headerName: 'User Name', width: 150 },
-  { field: 'emailAddress', headerName: 'Email Address', width: 150 },
-];
-
-const rows = [
-  {
-    id: 1,
-    lastName: 'Omar',
-    firstName: 'ashraf',
-    userName: 'omar.ashraf1',
-    age: 35,
-    emailAddress: 'fdsfdsdfs@gmail.com',
-  },
-  {
-    id: 2,
-    userName: 'ahemedsalem12',
-    emailAddress: 'dasdsa@gmail.com',
-    lastName: 'salem',
-    firstName: 'ahmed',
-    age: 42,
-  },
-  {
-    id: 3,
-    userName: 'john.wick.07',
-    emailAddress: 'john@gmail.com',
-    lastName: 'wick',
-    firstName: 'John',
-    age: 45,
-  },
-  {
-    id: 4,
-    userName: 'Stark',
-    emailAddress: 'stark122@gmail.com',
-    lastName: 'Snow',
-    firstName: 'stark',
-    age: 16,
-  },
-  {
-    id: 5,
-    userName: 'Targaryen',
-    lastName: 'Good',
-    firstName: 'Targaryen',
-    emailAddress: 'Targaryen44@gmail.com',
-    age: 41,
-  },
-  {
-    id: 6,
-    userName: 'Melisandre',
-    lastName: 'Snow',
-    firstName: 'Jon',
-    emailAddress: 'Melisandre@gmail.com',
-    age: 150,
-  },
-  {
-    id: 7,
-    userName: 'Clifford',
-    lastName: 'yehia',
-    firstName: 'Clifford',
-    emailAddress: 'Cliffordd885@gmail.com',
-    age: 44,
-  },
-  {
-    id: 8,
-    userName: 'Frances',
-    lastName: 'Roxie',
-    firstName: 'Frances',
-    emailAddress: 'dsasad@gmail.com',
-    age: 36,
-  },
-  {
-    id: 9,
-    userName: 'Roxie',
-    lastName: 'Snow',
-    firstName: 'Roxie',
-    emailAddress: 'wdqwfw@gmail.com',
-    age: 65,
-  },
-];
+};
+const names = ['Active', 'Inactive', 'Locked'];
 
 function Managment() {
+  const formik = useFormik({
+    initialValues: {
+      search: '',
+      userName: '',
+      startDate: '',
+      endDate: '',
+      status: [],
+    },
+  });
+  const [value, setValue] = useState([
+    new DateObject().setDay(15),
+    new DateObject().add(1, 'month').setDay(15),
+  ]);
+
+  const [checks, setChecks] = useState([]);
+
+  useEffect(() => {
+    formik.values.startDate = value[0]?.toDate().toISOString();
+    formik.values.endDate = value[1]?.toDate().toISOString();
+    formik.values.status = checks;
+  }, [value, checks]);
+  console.log(formik.values);
+  console.log(value[0].toDate().toISOString());
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setChecks(typeof value === 'string' ? value.split(',') : value);
+  };
   return (
     <div className="manage-container">
       <div className="mange-header">
         <h1>User Managment</h1>
         <button className="add-btn"> + Add New</button>
       </div>
+
       <div className="managment">
+        <form onSubmit={formik.handleSubmit} className="form-filters">
+          <SearchInput
+            name="search"
+            onChange={formik.handleChange}
+            style={{ width: '20%' }}
+            placeholder="Search..."
+          />
+          <SearchInput
+            name="userName"
+            onChange={formik.handleChange}
+            style={{ width: '15%' }}
+            placeholder="user name"
+          />
+          <FormControl sx={{ width: 200 }}>
+            <InputLabel id="demo-multiple-checkbox-label">Status</InputLabel>
+            <Select
+              labelId="demo-multiple-checkbox-label"
+              id="demo-multiple-checkbox"
+              multiple
+              value={checks}
+              onChange={handleChange}
+              input={<OutlinedInput label="Status" />}
+              renderValue={(selected) => selected.join(', ')}
+              MenuProps={MenuProps}
+            >
+              {names.map((name) => (
+                <MenuItem key={name} value={name}>
+                  <Checkbox checked={checks.indexOf(name) > -1} />
+                  <ListItemText primary={name} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <DatePicker
+            value={value}
+            onChange={setValue}
+            range
+            numberOfMonths={2}
+            plugins={[<Footer position="bottom" />]}
+          />
+          <button className="apply-filter-btn">Apply Filters</button>
+        </form>
         <DataGrid
+          className="table-grid"
           rows={rows}
           columns={columns}
           pageSize={5}
