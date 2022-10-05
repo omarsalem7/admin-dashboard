@@ -12,7 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-import { columns, rows } from './dataGridUtils';
+import { columns } from './dataGridUtils';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
@@ -31,7 +31,7 @@ const MenuProps = {
 };
 const names = ['Active', 'Inactive', 'Locked'];
 
-function Managment() {
+function Managment({ data }) {
   const formik = useFormik({
     initialValues: {
       search: '',
@@ -52,8 +52,8 @@ function Managment() {
     formik.values.endDate = value[1]?.toDate().toISOString();
     formik.values.status = checks;
   }, [value, checks]);
-  console.log(formik.values);
-  console.log(value[0].toDate().toISOString());
+  // console.log(formik.values);
+  // console.log(value[0].toDate().toISOString());
 
   const handleChange = (event) => {
     const {
@@ -116,7 +116,7 @@ function Managment() {
         </Modal>
       </div>
       <div className="managment">
-        <form onSubmit={formik.handleSubmit} className="form-filters">
+        <form className="form-filters">
           <SearchInput
             name="search"
             onChange={formik.handleChange}
@@ -159,7 +159,7 @@ function Managment() {
           <button className="apply-filter-btn">Apply Filters</button>
         </form>
         <DataGrid
-          rows={rows}
+          rows={data}
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}

@@ -6,10 +6,16 @@ import SearchInput from '../searchInput/searchInput';
 import AccordionField from '../accordion/accordion';
 import Logo from '../../assets/logo.jpg';
 import './sideBar.css';
+import { filterWithEmail } from '../../utils';
 
-function SideBar() {
+function SideBar({ data, setData }) {
   const [sidebar, setSidebar] = useState(true);
+  const [query, setQuery] = useState('');
   const showSidebar = () => setSidebar(!sidebar);
+  function handleChange(event) {
+    setQuery(event.target.value);
+    setData(filterWithEmail(data, query));
+  }
   return (
     <div className="navbar-container">
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -19,7 +25,11 @@ function SideBar() {
             <img src={Logo} alt="logo" width="50%" />
           </li>
           <li>
-            <SearchInput placeholder="Search..." />
+            <SearchInput
+              onChange={handleChange}
+              value={query}
+              placeholder="Search..."
+            />
           </li>
           <li className="nav-dashboard-label">
             <DashboardIcon />
