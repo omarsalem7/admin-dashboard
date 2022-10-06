@@ -46,6 +46,14 @@ function Managment({ data, setData }) {
       status: [],
     },
     onSubmit: (values) => {
+      if (
+        typeof values.startDate === 'undefined' &&
+        typeof values.endDate === 'undefined'
+      ) {
+        values.startDate = '';
+        values.endDate = '';
+      }
+      console.log(values);
       setData(filterWithMutiValues(values));
     },
   });
@@ -63,11 +71,12 @@ function Managment({ data, setData }) {
       formikModal.values.date = new Date().toLocaleDateString();
       formikModal.values.id = Math.floor(100000 + Math.random() * 900000);
       setData((prev) => [...prev, values]);
+      localStorage.setItem('users', JSON.stringify([...data, values]));
       setOpen(false);
     },
   });
   const [value, setValue] = useState([
-    new DateObject().setDay(15),
+    new DateObject().setDay(new Date().getDate()),
     new DateObject().add(1, 'month').setDay(15),
   ]);
 
@@ -84,6 +93,8 @@ function Managment({ data, setData }) {
     } = event;
     setChecks(typeof value === 'string' ? value.split(',') : value);
   };
+  // const date = new Date().getDate();
+  // console.log(date);
 
   return (
     <div className="manage-container">
