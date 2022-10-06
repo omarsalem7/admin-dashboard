@@ -1,0 +1,87 @@
+.manage-container {
+  width: 100%;
+  margin: 41px 5px 0 -24px;
+}
+
+.mange-header {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.MuiDataGrid-main {
+  height: 70vh;
+}
+
+.managment {
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.cellWithAvatar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cellWithAvatar div {
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+}
+
+.add-btn {
+  background-color: var(--green);
+  border: none;
+  outline: none;
+  color: #fff;
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+.form-filters {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+}
+
+.rmdp-input {
+  padding: 22px 5px !important;
+}
+
+.apply-filter-btn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  color: rgb(79, 79, 255);
+  font-size: 15px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark);
+  color: #fff;
+  padding: 20px;
+}
+
+.modal-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-footer {
+  gap: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 40px;
+}

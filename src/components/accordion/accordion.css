@@ -1,0 +1,25 @@
+.accordion {
+  margin-left: -15px;
+}
+.accordion-color {
+  background-color: var(--dark) !important;
+  color: var(--textGray) !important;
+}
+
+.accordion-color-detail {
+  background-color: #202949;
+  color: var(--textGray);
+}
+
+.accordion-color-detail li {
+  list-style: none;
+  padding: 15px 10px;
+}
+
+.accordion-color-detail li:hover {
+  color: var(--green);
+}
+
+.accordion-color svg {
+  color: var(--textGray);
+}
