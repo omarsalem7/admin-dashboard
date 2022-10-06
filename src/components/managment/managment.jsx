@@ -53,7 +53,6 @@ function Managment({ data, setData }) {
         values.startDate = '';
         values.endDate = '';
       }
-      console.log(values);
       setData(filterWithMutiValues(values));
     },
   });
@@ -71,7 +70,6 @@ function Managment({ data, setData }) {
       formikModal.values.date = new Date().toLocaleDateString();
       formikModal.values.id = Math.floor(100000 + Math.random() * 900000);
       setData((prev) => [...prev, values]);
-      localStorage.setItem('users', JSON.stringify([...data, values]));
       setOpen(false);
     },
   });
@@ -85,7 +83,7 @@ function Managment({ data, setData }) {
     formik.values.startDate = value[0]?.toDate()?.toLocaleDateString();
     formik.values.endDate = value[1]?.toDate()?.toLocaleDateString();
     formik.values.status = checks;
-  }, [value, checks]);
+  }, [value, checks, data]);
 
   const handleChange = (event) => {
     const {
@@ -93,8 +91,6 @@ function Managment({ data, setData }) {
     } = event;
     setChecks(typeof value === 'string' ? value.split(',') : value);
   };
-  // const date = new Date().getDate();
-  // console.log(date);
 
   return (
     <div className="manage-container">
