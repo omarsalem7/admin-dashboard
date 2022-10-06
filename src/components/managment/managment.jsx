@@ -33,6 +33,10 @@ const MenuProps = {
 const names = ['Active', 'Inactive', 'Locked'];
 
 function Managment({ data, setData }) {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const formik = useFormik({
     initialValues: {
       search: '',
@@ -42,8 +46,24 @@ function Managment({ data, setData }) {
       status: [],
     },
     onSubmit: (values) => {
-      console.log(JSON.stringify(values, null, 2));
       setData(filterWithMutiValues(values));
+    },
+  });
+  const formikModal = useFormik({
+    initialValues: {
+      id: '',
+      lastName: '',
+      firstName: '',
+      userName: '',
+      emailAddress: '',
+      status: '',
+      date: '',
+    },
+    onSubmit: (values) => {
+      formikModal.values.date = new Date().toLocaleDateString();
+      formikModal.values.id = Math.floor(100000 + Math.random() * 900000);
+      setData((prev) => [...prev, values]);
+      setOpen(false);
     },
   });
   const [value, setValue] = useState([
@@ -58,9 +78,6 @@ function Managment({ data, setData }) {
     formik.values.status = checks;
   }, [value, checks]);
 
-  // const date = new Date().toLocaleDateString();
-  // console.log(date);
-
   const handleChange = (event) => {
     const {
       target: { value },
@@ -68,9 +85,6 @@ function Managment({ data, setData }) {
     setChecks(typeof value === 'string' ? value.split(',') : value);
   };
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   return (
     <div className="manage-container">
       <div className="mange-header">
@@ -92,31 +106,67 @@ function Managment({ data, setData }) {
                   <CloseIcon fontSize="large" color="success" />
                 </Button>
               </div>
-              <form className="modal-form">
+              <form onSubmit={formikModal.handleSubmit} className="modal-form">
                 <div>
                   <label>First Name</label>
-                  <SearchInput placeholder="Enter First Name" />
+                  <SearchInput
+                    onChange={formikModal.handleChange}
+                    name="firstName"
+                    placeholder="Enter First Name"
+                  />
                 </div>
                 <div>
                   <label>Last Name</label>
-                  <SearchInput placeholder="Enter Last Name" />
+                  <SearchInput
+                    onChange={formikModal.handleChange}
+                    name="lastName"
+                    placeholder="Enter Last Name"
+                  />
                 </div>
                 <div>
                   <label>User Name</label>
-                  <SearchInput placeholder="Enter Username" />
+                  <SearchInput
+                    onChange={formikModal.handleChange}
+                    name="userName"
+                    placeholder="Enter Username"
+                  />
                 </div>
                 <div>
                   <label>Email Address</label>
-                  <SearchInput placeholder="Enter email address" />
+                  <SearchInput
+                    onChange={formikModal.handleChange}
+                    name="emailAddress"
+                    placeholder="Enter email address"
+                  />
+                </div>
+                <FormControl
+                  style={{ width: '100%', marginLeft: '-1px' }}
+                  sx={{ m: 1, minWidth: 140 }}
+                  size="small"
+                >
+                  <InputLabel id="demo-select-small">Status</InputLabel>
+                  <Select
+                    labelId="demo-select-small"
+                    id="status"
+                    value={formikModal.values.status}
+                    label="Age"
+                    name="status"
+                    onChange={formikModal.handleChange}
+                  >
+                    <MenuItem value={'Active'}>Active</MenuItem>
+                    <MenuItem value={'Inactive'}>Inactive</MenuItem>
+                    <MenuItem value={'Locked'}>Locked</MenuItem>
+                  </Select>
+                </FormControl>
+
+                <hr />
+                <div className="modal-footer">
+                  <MainBtn type="submit">Add user</MainBtn>
+                  <MainBtn onClick={handleClose} style={{ background: 'gray' }}>
+                    Cancel
+                  </MainBtn>
                 </div>
               </form>
-              <hr />
-              <div className="modal-footer">
-                <MainBtn>Add user</MainBtn>
-                <MainBtn onClick={handleClose} style={{ background: 'gray' }}>
-                  Cancel
-                </MainBtn>
-              </div>
             </div>
           </Box>
         </Modal>
