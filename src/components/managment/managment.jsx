@@ -19,7 +19,6 @@ import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import MainBtn from '../mainBtn/mainBtn';
 import { filterWithMutiValues } from '../../utils';
-import { mockData } from '../../data';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 5;
@@ -64,8 +63,6 @@ function Managment({ data, setData }) {
       formikModal.values.date = new Date().toLocaleDateString();
       formikModal.values.id = Math.floor(100000 + Math.random() * 900000);
       setData((prev) => [...prev, values]);
-      mockData.push(values);
-      console.log(mockData);
       setOpen(false);
     },
   });
