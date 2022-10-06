@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SearchInput = ({ ...rest }) => {
+const CustomInput = ({ ...rest }) => {
   return <Input type="text" {...rest} />;
 };
 
@@ -15,4 +15,4 @@ const Input = styled.input`
   border: 1px solid #c0c4d6;
 `;
 
-export default SearchInput;
+export default CustomInput;

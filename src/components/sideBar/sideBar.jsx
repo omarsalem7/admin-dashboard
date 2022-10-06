@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import SidebarData from './SidebarData';
-import SearchInput from '../searchInput/searchInput';
+import CustomInput from '../customInput/customInput';
 import AccordionField from '../accordion/accordion';
 import Logo from '../../assets/logo.jpg';
 import './sideBar.css';
@@ -25,7 +24,7 @@ function SideBar({ setData }) {
             <img src={Logo} alt="logo" width="50%" />
           </li>
           <li>
-            <SearchInput
+            <CustomInput
               onChange={handleChange}
               value={query}
               placeholder="Search..."

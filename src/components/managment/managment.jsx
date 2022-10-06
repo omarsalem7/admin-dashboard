@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import DatePicker, { DateObject } from 'react-multi-date-picker';
 import Footer from 'react-multi-date-picker/plugins/range_picker_footer';
 import { useFormik } from 'formik';
-import SearchInput from '../searchInput/searchInput';
+import CustomInput from '../customInput/customInput';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -19,6 +19,7 @@ import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import MainBtn from '../mainBtn/mainBtn';
 import { filterWithMutiValues } from '../../utils';
+import { mockData } from '../../data';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 5;
@@ -63,6 +64,8 @@ function Managment({ data, setData }) {
       formikModal.values.date = new Date().toLocaleDateString();
       formikModal.values.id = Math.floor(100000 + Math.random() * 900000);
       setData((prev) => [...prev, values]);
+      mockData.push(values);
+      console.log(mockData);
       setOpen(false);
     },
   });
@@ -109,7 +112,7 @@ function Managment({ data, setData }) {
               <form onSubmit={formikModal.handleSubmit} className="modal-form">
                 <div>
                   <label>First Name</label>
-                  <SearchInput
+                  <CustomInput
                     onChange={formikModal.handleChange}
                     name="firstName"
                     placeholder="Enter First Name"
@@ -117,7 +120,7 @@ function Managment({ data, setData }) {
                 </div>
                 <div>
                   <label>Last Name</label>
-                  <SearchInput
+                  <CustomInput
                     onChange={formikModal.handleChange}
                     name="lastName"
                     placeholder="Enter Last Name"
@@ -125,7 +128,7 @@ function Managment({ data, setData }) {
                 </div>
                 <div>
                   <label>User Name</label>
-                  <SearchInput
+                  <CustomInput
                     onChange={formikModal.handleChange}
                     name="userName"
                     placeholder="Enter Username"
@@ -133,7 +136,7 @@ function Managment({ data, setData }) {
                 </div>
                 <div>
                   <label>Email Address</label>
-                  <SearchInput
+                  <CustomInput
                     onChange={formikModal.handleChange}
                     name="emailAddress"
                     placeholder="Enter email address"
@@ -173,13 +176,13 @@ function Managment({ data, setData }) {
       </div>
       <div className="managment">
         <form onSubmit={formik.handleSubmit} className="form-filters">
-          <SearchInput
+          <CustomInput
             name="search"
             onChange={formik.handleChange}
             style={{ width: '20%' }}
             placeholder="Search..."
           />
-          <SearchInput
+          <CustomInput
             name="userName"
             onChange={formik.handleChange}
             style={{ width: '15%' }}
